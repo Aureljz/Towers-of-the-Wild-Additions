@@ -1,0 +1,7 @@
+Credits to idrae_ for the original mod idea, Towers of the Wild (although original code, data or assets were not used on this mod).
+
+Additional thanks to TelepathicGrunt for their structure tutorial (licenced under CCO-1.0 licence at the time of writing);
+and to xPand4B, who created the Fabric version of Towers of the Wild (licenced under MIT licence at the time of writing);
+
+TelepathicGrunt's Structure Tutorial (https://github.com/TelepathicGrunt/StructureTutorialMod) is used as a general frame for the mod;
+on the other hand, certain lines of code from xPand4B (specifically from: https://github.com/xPand4B/Towers_Of_The_Wild_Reworked/blob/main/src/main/java/waldinet/towers_of_the_wild_reworked/utils/ModUtils.java) were used to solve author discrepancies when integrating Waystones compatibility.

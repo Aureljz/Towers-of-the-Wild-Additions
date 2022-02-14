@@ -1,0 +1,15 @@
+{
+  "name": "totw_additions:end_tower/end_tower_start_waystones",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "totw_additions:end_tower/end_tower_part_0_waystones",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
