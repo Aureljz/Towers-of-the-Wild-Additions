@@ -50,15 +50,9 @@ import java.util.Optional;
 
 public class EndTowerStructure extends StructureFeature<StructurePoolFeatureConfig> {
 
-    public EndTowerStructure(Codec<StructurePoolFeatureConfig> codec) {
-        super(codec, (context) -> {
-                    if (!EndTowerStructure.canGenerate(context)) {
-                        return Optional.empty();
-                    } else {
-                        return EndTowerStructure.createPiecesGenerator(context);
-                    }
-                },
-                PostPlacementProcessor.EMPTY);
+    public EndTowerStructure() {
+        // Create the pieces layout of the structure and give it to the game
+        super(StructurePoolFeatureConfig.CODEC, EndTowerStructure::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
 
     private static boolean canGenerate(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
@@ -73,50 +67,21 @@ public class EndTowerStructure extends StructureFeature<StructurePoolFeatureConf
         return topBlock.getFluidState().isEmpty() && landHeight > 10; //landHeight > 100;
     }
 
-    private static boolean isOwner(String owner, String modId) {
-        ModContainer modContainer = FabricLoader.getInstance().getModContainer(modId).get();
-        Person author = modContainer.getMetadata().getAuthors().iterator().next();
-
-        return author.getName().contains(owner);
-    }
-
-    private static String waystonesString() {
-        if (FabricLoader.getInstance().isModLoaded("waystones") && isOwner("BlayTheNinth", "waystones") && TowersAdditionsMain.CONFIG.endTowerWaystones)
-            return "_waystones";
-        if (FabricLoader.getInstance().isModLoaded("waystones") && isOwner("LordDeatHunter", "waystones") && TowersAdditionsMain.CONFIG.endTowerWaystones) {
-            return "_waystones_fabric";
-        } else return "";
-    }
-
-
     public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
+
+        if (!EndTowerStructure.canGenerate(context)) {
+            return Optional.empty();
+        }
 
         BlockPos blockpos = context.chunkPos().getCenterAtY(0);
 
-            StructurePoolFeatureConfig newConfig = new StructurePoolFeatureConfig(
-                    () -> context.registryManager().get(Registry.STRUCTURE_POOL_KEY)
-                            .get(new Identifier(TowersAdditionsMain.MODID, "end_tower/end_tower_start" + waystonesString())),
-                    10);
-
-            StructureGeneratorFactory.Context<StructurePoolFeatureConfig> newContext = new StructureGeneratorFactory.Context<>(
-                    context.chunkGenerator(),
-                    context.biomeSource(),
-                    context.seed(),
-                    context.chunkPos(),
-                    newConfig,
-                    context.world(),
-                    context.validBiome(),
-                    context.structureManager(),
-                    context.registryManager()
-            );
-
-            Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator =
-                    StructurePoolBasedGenerator.generate(
-                            newContext,
-                            PoolStructurePiece::new,
-                            blockpos,
-                            false,
-                            true);
+        Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator =
+                StructurePoolBasedGenerator.generate(
+                        context,
+                        PoolStructurePiece::new,
+                        blockpos,
+                        false,
+                        true);
 
             return structurePiecesGenerator;
 
