@@ -1,0 +1,14 @@
+{
+  "type": "totw_additions:end_tower",
+
+  "config": {
+    "start_pool": "totw_additions:end_tower/end_tower_start_waystones_fabric",
+    "size": 1
+  },
+
+  "biomes": "#totw_additions:has_structure/end_tower_biomes",
+  "adapt_noise": true,
+  "spawn_overrides": {
+
+  }
+}
