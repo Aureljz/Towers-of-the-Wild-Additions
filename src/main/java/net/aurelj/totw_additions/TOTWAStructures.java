@@ -1,14 +1,10 @@
 package net.aurelj.totw_additions;
 
+import net.aurelj.totw_additions.mixin.StructureFeatureAccessor;
 import net.aurelj.totw_additions.structures.EndTowerStructure;
 import net.aurelj.totw_additions.structures.NetherTowerStructure;
-import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
-import net.fabricmc.fabric.mixin.structure.StructureFeatureAccessor;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.chunk.StructureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
-import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 
 public class TOTWAStructures {
     public static StructureFeature<?> END_TOWER = new EndTowerStructure();

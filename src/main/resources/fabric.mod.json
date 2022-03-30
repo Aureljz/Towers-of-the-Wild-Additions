@@ -18,11 +18,13 @@
       "net.aurelj.totw_additions.TowersAdditionsMain"
     ]
   },
-  "mixins": [],
-
+  "mixins": [
+    "totw_additions.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.13.3",
     "minecraft": "~1.18.2",
-    "fabric": ">=0.47.8"
+    "fabric": ">=0.47.8",
+    "waystones": ">=2.5.0"
   }
 }
