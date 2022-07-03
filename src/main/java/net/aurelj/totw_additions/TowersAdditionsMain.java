@@ -12,8 +12,6 @@ public class TowersAdditionsMain implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        TOTWAStructures.registerStructureFeatures();
-
     }
 }
 
